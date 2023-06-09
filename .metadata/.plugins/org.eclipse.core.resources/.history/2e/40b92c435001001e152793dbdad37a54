@@ -1,0 +1,49 @@
+package com.ust.producer.Controllerb;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ust.producer.Repositoryp.RepositoryBook;
+import com.ust.producer.model.Book;
+
+@RestController
+@RequestMapping("/book")
+public class ControllerBook {
+
+	
+	
+	@Autowired
+	RepositoryBook repo;
+	
+	
+	
+	@PostMapping("/create")
+	public ResponseEntity<?> create(@RequestBody Book book)
+	{
+		Book book1=repo.save(book);
+		return ResponseEntity.ok().body(book1);
+	}
+
+	
+	
+	@GetMapping("/getall")
+	public ResponseEntity<List<Book>> getall()
+	{
+       return ResponseEntity.ok().body(repo.findAll()) ;
+	}
+	
+	@GetMapping("/getbyid/{id}")
+	public ResponseEntity<?> getbyid(@PathVariable int id)
+	{
+       return ResponseEntity.ok().body(repo.findAll()) ;
+	}
+	
+}

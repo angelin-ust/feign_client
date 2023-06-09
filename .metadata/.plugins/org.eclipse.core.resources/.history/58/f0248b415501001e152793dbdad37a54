@@ -1,0 +1,24 @@
+package com.ust.consumer.repositoryc;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.ust.consumer.modelc.Book;
+
+@FeignClient(value="producer", url="http://localhost:8080/book")
+public interface RepositoryBook {
+
+	
+
+	@RequestMapping(method=RequestMethod.GET ,value="/getall")
+	public List<Book> getallbook();
+	
+	
+	
+	
+	
+	
+}

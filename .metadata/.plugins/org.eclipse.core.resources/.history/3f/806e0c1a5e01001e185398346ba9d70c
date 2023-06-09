@@ -1,0 +1,26 @@
+package com.ust.consumer.controllerc;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ust.consumer.modelc.Book;
+import com.ust.consumer.repositoryc.RepositoryBook;
+
+@RestController
+@RequestMapping("/bookc")
+public class Controllerc {
+	
+RepositoryBook repo;
+
+@GetMapping("/fetchall")
+public List<Book> getallc(){
+	return repo.getallbook();
+}
+
+
+
+
+}
